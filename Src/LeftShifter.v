@@ -21,17 +21,18 @@
 
 
 module LeftShifter(
-    input [15:0] Data_In,
-    output [15:0] Data_Out
+    input [15:0] DataIn,
+    output [15:0] DataOut
     );
     
-    reg [15:0] tmp = 16'h0000;
-    always@ (Data_In)
+    reg [15:0] tmp;
+    
+    always@ (DataIn)
     begin
-        tmp[15:1] = Data_In[14:0];
-        tmp[0] = 1'b0; // setting first bit as 0
+        tmp[15:1] = DataIn[14:0];
+        tmp[0] = 1'b0;
     end
     
-    assign Data_Out = tmp;
+    assign DataOut = tmp;
     
 endmodule
