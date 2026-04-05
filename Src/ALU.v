@@ -33,7 +33,7 @@ module ALU(
     localparam EQ = 1;
     localparam NE = 0;
     
-    always@*
+    always@ (A, B, Operation)
     begin
         case(Operation)
             3'b000: r = A + B;
