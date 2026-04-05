@@ -21,22 +21,22 @@
 
 
 module PC(
+    input wire clk,
     input wire[15:0] NextAddr,
     output wire[15:0] CurrAddr
     );
     
     reg[15:0] address;
-    reg[15:0] curr;
+
     
     initial
     begin
         address = 16'h0000;
     end
     
-    always@ (NextAddr)
+    always@ (posedge clk)
     begin
-        curr = address;
-        address = NextAddr;
+        address <= NextAddr;
     end
     
     assign CurrAddr = curr;

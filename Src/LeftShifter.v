@@ -29,6 +29,7 @@ module LeftShifter(
     always@ (Data_In)
     begin
         tmp[15:1] = Data_In[14:0];
+        tmp[0] = 1'b0; // setting first bit as 0
     end
     
     assign Data_Out = tmp;
