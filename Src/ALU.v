@@ -20,8 +20,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module ALU(
-    input wire[15:0] A, // RegData1 R[rs]
-    input wire[15:0] B, // RegData2 R[rt/rd]
+    input wire[15:0] A,
+    input wire[15:0] B,
     input wire[2:0] Operation,
     output wire[15:0] Result,
     output wire[1:0] Flags
@@ -33,12 +33,12 @@ module ALU(
     localparam EQ = 1;
     localparam NE = 0;
     
-    always@ (A,B,Operation)
+    always@*
     begin
         case(Operation)
             3'b000: r = A + B;
             3'b001: r = A - B;
-            3'b010: r = B << A; // Swapped to match instruction
+            3'b010: r = B << A;
             3'b011: r = A & B;
             3'b100: r = A >> B;
             3'b101: r = A | B;
@@ -48,17 +48,16 @@ module ALU(
         
         if (A == B) begin
             f[EQ] = 1'b1;
+            f[NE] = 1'b0;
         end
-        else begin
+        else if (A != B) begin
             f[EQ] = 1'b0;
-        end
-        
-        if (A != B) begin
             f[NE] = 1'b1;
         end
         else begin
+            f[EQ] = 1'b0;
             f[NE] = 1'b0;
-        end
+        end  
     end
     
     assign Result = r;
