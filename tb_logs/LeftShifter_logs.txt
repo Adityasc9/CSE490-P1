@@ -1,0 +1,6 @@
+Time resolution is 1 ps
+In=0001 -> Out=0x0002 (expect 0002)
+In=0002 -> Out=0x0004 (expect 0004)
+In=FFFF -> Out=0xfffe (expect FFFE)
+In=8000 -> Out=0x0000 (expect 0000)
+$finish called at time : 40 ns

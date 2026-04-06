@@ -1,0 +1,12 @@
+Time resolution is 1 ps
+ADD  3+5=8 (expect 8), Flags=01
+SUB  10-3=7 (expect 7), Flags=01
+SLL  0x005A<<4=0x05a0 (expect 05A0), Flags=01
+AND  0x000A&0x000C=0x0008 (expect 0008), Flags=01
+SLR  0x0D20>>0x0006=0x0034 (expect 0034), Flags=01
+ORR  0x0F00|0x000F=0x0f0f (expect 0F0F), Flags=01
+XOR  0x1234^0x1B38=0x090c (expect 090C), Flags=01
+NOT  ~0xFEDC=0x0123 (expect 0123), Flags=01
+EQ   A==B Flags=10 (expect EQ=1,NE=0 -> Flags=10)
+NE   A!=B Flags=01 (expect EQ=0,NE=1 -> Flags=01)
+$finish called at time : 100 ns

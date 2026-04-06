@@ -1,0 +1,6 @@
+Time resolution is 1 ps
+After reset:  CurrAddr=0000 (expect 0000)
+After +2:     CurrAddr=0002 (expect 0002)
+After +4:     CurrAddr=0004 (expect 0004)
+After +6:     CurrAddr=0006 (expect 0006)
+$finish called at time : 40 ns

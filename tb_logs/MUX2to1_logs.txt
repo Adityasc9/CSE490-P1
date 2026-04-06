@@ -1,0 +1,4 @@
+Time resolution is 1 ps
+Select=0: Out=0xaaaa (expect AAAA)
+Select=1: Out=0x5555 (expect 5555)
+$finish called at time : 20 ns
