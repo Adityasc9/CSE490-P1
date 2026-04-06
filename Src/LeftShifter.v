@@ -25,12 +25,11 @@ module LeftShifter(
     output [15:0] DataOut
     );
     
-    reg [15:0] tmp;
+    reg [15:0] tmp = 16'h0000;
     
     always@ (DataIn)
     begin
-        tmp[15:1] = DataIn[14:0];
-        tmp[0] = 1'b0;
+        tmp = DataIn << 1;
     end
     
     assign DataOut = tmp;
