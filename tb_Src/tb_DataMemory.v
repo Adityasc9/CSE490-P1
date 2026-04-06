@@ -10,7 +10,7 @@ module tb_DataMemory;
     initial begin
         MemRead = 0; MemWrite = 0;
 
-        // Write 0x1234 to address 0x0010 (big-endian: [0x10]=0x12, [0x11]=0x34)
+        // Write 0x1234 to address 0x0010 
         Addr = 16'h0010; DataIn = 16'h1234; MemWrite = 1; MemRead = 0; #10;
         MemWrite = 0; #5;
 

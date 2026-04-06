@@ -32,14 +32,14 @@ module tb_RegisterFile;
         $display("RegData1 (reg2) = 0x%04h (expect ABCD)", RegData1);
         $display("RegData2 (reg3) = 0x%04h (expect 0000)", RegData2);
 
-        // Write 0x1234 to reg 3, read back both
+        // Write 0x1234 to reg 2, read back both
         WriteData = 16'h1234;
         @(posedge Clock); #1;
         Cntrl_RegWrite = 1;
         @(posedge Clock); #1;
         Cntrl_RegWrite = 0; #1;
-        $display("RegData1 (reg2) = 0x%04h (expect ABCD)", RegData1);
-        $display("RegData2 (reg3) = 0x%04h (expect 1234)", RegData2);
+        $display("RegData1 (reg2) = 0x%04h (expect 1234)", RegData1);
+        $display("RegData2 (reg3) = 0x%04h (expect 0000)", RegData2);
 
         $finish;
     end

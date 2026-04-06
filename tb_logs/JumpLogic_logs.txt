@@ -1,0 +1,4 @@
+Time resolution is 1 ps
+PC=000E Offset=0004: Result=0x0012 (expect 0012 )
+PC=000E Offset=0002: Result=0x0010 (expect 0010 )
+$finish called at time : 20 ns 

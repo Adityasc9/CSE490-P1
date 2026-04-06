@@ -11,7 +11,7 @@ module tb_Adder;
         $display("0x000E + 0x0002 = 0x%04h (expect 0010)", Result);
 
         A = 16'hFFFE; B = 16'h0002; #10;
-        $display("0xFFFE + 0x0002 = 0x%04h (expect 0000, wrap)", Result);
+        $display("0xFFFE + 0x0002 = 0x%04h (expect 0000, wraps because overflow)", Result);
 
         A = 16'h0000; B = 16'h0000; #10;
         $display("0x0000 + 0x0000 = 0x%04h (expect 0000)", Result);

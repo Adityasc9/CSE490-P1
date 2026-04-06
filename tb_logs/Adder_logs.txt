@@ -1,0 +1,7 @@
+Time resolution is 1 ps
+0x000E + 0x0002 = 0x0010 (expect 0010)
+0xFFFE + 0x0002 = 0x0000 (expect 0000, wraps because overflow)
+0x0000 + 0x0000 = 0x0000 (expect 0000)
+0xDE00 + 0x00AD = 0xdead(expect DEAD)
+0x468A + 0x7865 = 0xbeef(expect BEEF)
+$finish called at time : 50 ns : File "C:/Users/SHOUVIK/Desktop/WORK/CSE490/prj1_tb/tb_Adder.v" Line 25

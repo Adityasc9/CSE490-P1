@@ -1,0 +1,6 @@
+Time resolution is 1 ps
+RegData1 (reg2) = 0xabcd (expect ABCD)
+RegData2 (reg3) = 0x0000 (expect 0000)
+RegData1 (reg2) = 0x1234 (expect 1234)
+RegData2 (reg3) = 0x0000 (expect 0000)
+$finish called at time : 52 ns
