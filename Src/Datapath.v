@@ -22,12 +22,15 @@
 
 module Datapath(
     input wire Clock
+    output wire [15:0] led,
     );
     
     // Program Counter
     wire [15:0] pc_nextaddr;
     wire [15:0] pc_curraddr;
     PC pc(.NextAddr(pc_nextaddr), .Clock(Clock), .CurrAddr(pc_curraddr));
+
+    assign led = pc_curraddr;
     
     // Instruction Memory
     wire [3:0] im_opcode;
@@ -117,4 +120,5 @@ module Datapath(
                            .MemRead(cntrl_memread), .MemWrite(cntrl_memwrite), .ALUSrc(cntrl_alusrc),
                            .MemtoReg(cntrl_memtoreg), .RegWrite(cntrl_regwrite), .ALUOp(cntrl_aluop)
                           );
+    
 endmodule
