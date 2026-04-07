@@ -9,7 +9,7 @@
 1200 // 16: lw r2, 0(r0)  (r2 = mem[0])
 4111 // 18: beq r1, r1, #1 (branch to 18 + 2 + (1 << 1) = 22)
 5120 // 20: bne r1, r2, #0  (skipped by BEQ above)
-6002 // 22: jmp #8 (jump to 22 + 2 + (8 << 1) = 40)
+6008 // 22: jmp #8 (jump to 22 + 2 + (8 << 1) = 40)
 
 
 
