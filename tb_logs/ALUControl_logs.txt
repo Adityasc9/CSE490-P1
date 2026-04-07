@@ -5,4 +5,4 @@ R-add funct=0000 : Op=000 (expect 000)
 R-sub funct=0001 : Op=001 (expect 001)
 R-sll funct=0010 : Op=010 (expect 010)
 R-and funct=0011 : Op=011 (expect 011)
-$finish called at time : 60 ns : File "C:/Users/SHOUVIK/Desktop/WORK/CSE490/prj1_tb/tb_ALUControl.v" Line 35
+$finish called at time : 60 ns 

@@ -3,4 +3,4 @@ beq, EQ set: Result=1 (expect 1)
 bne, NE set: Result=1 (expect 1)
 beq, NE set: Result=0 (expect 0)
 no branch:   Result=0 (expect 0)
-$finish called at time : 40 ns : File "C:/Users/SHOUVIK/Desktop/WORK/CSE490/prj1_tb/tb_BranchLogic.v" Line 29
+$finish called at time : 40 ns 
