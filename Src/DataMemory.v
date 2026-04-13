@@ -44,7 +44,7 @@ module DataMemory(
         dout = 16'h0000;
     end
     
-    always@ (posedge Clock)
+    always@ (negedge Clock)
     begin
         a = Addr[7:0];
         

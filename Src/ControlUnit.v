@@ -38,7 +38,7 @@ module ControlUnit(
     
     initial
     begin
-        csLUT[0] = 10'b0000000101; // add, sub, sll, and
+        csLUT[0] = 10'b0000000110; // add, sub, sll, and
         csLUT[1] = 10'b0001011100; // lw
         csLUT[2] = 10'b0000110000; // sw
         csLUT[3] = 10'b0000010100; // addi

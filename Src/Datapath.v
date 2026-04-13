@@ -30,7 +30,7 @@ module Datapath(
     wire [15:0] pc_curraddr;
     PC pc(.NextAddr(pc_nextaddr), .Clock(Clock), .CurrAddr(pc_curraddr));
 
-    assign led = pc_curraddr;
+    assign led = alu_result;
     
     // Instruction Memory
     wire [3:0] im_opcode;
@@ -48,7 +48,7 @@ module Datapath(
     wire [15:0] regfile_regdata2;
     wire [15:0] regfile_writedata;
     wire cntrl_regwrite;
-    RegisterFile register_file (.ReadReg1(im_rs), .ReadReg2(im_rt), .WriteData(regfile_writedata), .Cntrl_RegWrite(cntrl_regwrite), 
+    RegisterFile register_file (.ReadReg1(im_rt), .ReadReg2(im_rs), .WriteData(regfile_writedata), .Cntrl_RegWrite(cntrl_regwrite), 
                                 .Clock(Clock), .RegData1(regfile_regdata1), .RegData2(regfile_regdata2)
                                 );
     
@@ -64,18 +64,18 @@ module Datapath(
     // ALU Source MUX
     wire cntrl_alusrc;
     wire [15:0] mux_alusrc_out;
-    MUX2to1 mux_alusrc(.A(regfile_regdata2), .B(immed_ext), .Select(cntrl_alusrc), .Out(mux_alusrc_out));
+    MUX2to1 mux_alusrc(.A(regfile_regdata1), .B(immed_ext), .Select(cntrl_alusrc), .Out(mux_alusrc_out));
     
     // ALU
     wire [15:0] alu_result;
     wire [1:0] alu_flags;
-    ALU alu(.A(regfile_regdata1), .B(mux_alusrc_out), .Operation(alu_operation), .Result(alu_result), .Flags(alu_flags));
+    ALU alu(.A(regfile_regdata2), .B(mux_alusrc_out), .Operation(alu_operation), .Result(alu_result), .Flags(alu_flags));
     
     // Data Memory
     wire cntrl_memread;
     wire cntrl_memwrite;
     wire [15:0] datamem_out;
-    DataMemory data_memory(.Addr(alu_result), .DataIn(regfile_regdata2), .MemRead(cntrl_memread), .MemWrite(cntrl_memwrite), .Clock(Clock), .DataOut(datamem_out)); 
+    DataMemory data_memory(.Addr(alu_result), .DataIn(regfile_regdata1), .MemRead(cntrl_memread), .MemWrite(cntrl_memwrite), .Clock(Clock), .DataOut(datamem_out)); 
     
     // Register Source MUX
     wire cntrl_memtoreg;

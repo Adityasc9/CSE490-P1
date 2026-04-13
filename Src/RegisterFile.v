@@ -45,16 +45,18 @@ module RegisterFile(
         regdata2 = 16'h0000;
     end
     
-    always@ (Clock)
+    always@ (negedge Clock)
     begin
-        if (!Clock) begin
-            regdata1 = regfile[ReadReg1];
-            regdata2 = regfile[ReadReg2];
-        end
-        else if (Clock & Cntrl_RegWrite) begin
-            regfile[ReadReg1] = WriteData;
-        end  
-        else ;       
+        regdata1 = regfile[ReadReg1];
+        regdata2 = regfile[ReadReg2];
+    end
+    
+    always@ (posedge Clock)
+    begin
+        if (Cntrl_RegWrite)
+        begin
+            regfile[ReadReg1] = WriteData;    
+        end 
     end
     
     assign RegData1 = regdata1;
