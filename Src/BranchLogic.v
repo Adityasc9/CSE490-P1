@@ -27,12 +27,16 @@ module BranchLogic(
     );
     
     reg r;
+    initial
+    begin
+        r = 1'b0;
+    end
     
     always@ (BranchCntrl, ALUFlags)
     begin
-        if ((BranchCntrl == 2'b01) && (ALUFlags == 2'b01))
+        if ((BranchCntrl === 2'b01) && (ALUFlags === 2'b01))
             r = 1'b1;
-        else if ((BranchCntrl == 2'b10) && (ALUFlags == 2'b10))
+        else if ((BranchCntrl === 2'b10) && (ALUFlags === 2'b10))
             r = 1'b1;
         else 
             r = 1'b0;

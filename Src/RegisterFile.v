@@ -41,15 +41,17 @@ module RegisterFile(
         for (i = 0; i < 16; i = i + 1) begin
             regfile[i] = 16'h0000;
         end
+        regdata1 = 16'h0000;
+        regdata2 = 16'h0000;
     end
     
     always@ (Clock)
     begin
-        if (Clock) begin
+        if (!Clock) begin
             regdata1 = regfile[ReadReg1];
             regdata2 = regfile[ReadReg2];
         end
-        else if (!Clock & Cntrl_RegWrite) begin
+        else if (Clock & Cntrl_RegWrite) begin
             regfile[ReadReg1] = WriteData;
         end  
         else ;       

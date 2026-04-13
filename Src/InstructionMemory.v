@@ -30,17 +30,63 @@ module InstructionMemory(
     output wire[11:0] JmpOffset
     );
     
-    reg [15:0] instrmem [0:127];    
+    reg [7:0] instrmem [0:255];    
     reg [15:0] instruction;
     
-    initial
+    /*initial
     begin
         $readmemh("instructions_memoryfile.mem", instrmem, 16'h0000, 16'h007F);
+    end
+    */
+    integer i;
+    initial
+    begin
+        instrmem[0] = 8'h31;
+        instrmem[1] = 8'h11;
+        
+        instrmem[2] = 8'h32;
+        instrmem[3] = 8'h24;
+        
+        instrmem[4] = 8'h33;
+        instrmem[5] = 8'h3A;
+        
+        instrmem[6] = 8'h03;
+        instrmem[7] = 8'h20;
+        
+        instrmem[8] = 8'h02;
+        instrmem[9] = 8'h31;
+        
+        instrmem[10] = 8'h01;
+        instrmem[11] = 8'h12;
+        
+        instrmem[12] = 8'h03;
+        instrmem[13] = 8'h23;
+        
+        instrmem[14] = 8'h21;
+        instrmem[15] = 8'h00;
+        
+        instrmem[16] = 8'h12;
+        instrmem[17] = 8'h00;
+        
+        instrmem[18] = 8'h41;
+        instrmem[19] = 8'h11;
+        
+        instrmem[20] = 8'h51;
+        instrmem[21] = 8'h20;
+        
+        instrmem[22] = 8'h60;
+        instrmem[23] = 8'h08;
+        
+        for (i = 24; i < 256; i = i + 1) begin
+            instrmem[i] = 8'h00;
+        end
+        
+        instruction = 16'h0000;
     end
     
     always@ (Addr)
     begin
-        instruction = instrmem[Addr[6:0]];
+        instruction = { instrmem[Addr[6:0]], instrmem[Addr[6:0] + 1] };
     end
     
     assign Opcode = instruction[15:12];

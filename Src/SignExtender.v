@@ -26,6 +26,10 @@ module SignExtender(
     );
     
     reg [15:0] extended;
+    initial
+    begin
+        extended = 16'h0000;
+    end
     
     always@ (ImmediateIn)
     begin

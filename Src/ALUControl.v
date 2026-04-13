@@ -27,6 +27,10 @@ module ALUControl(
     );
     
     reg [2:0] op;
+    initial
+    begin
+        op = 3'b000;
+    end
     
     always@ (ALUOp, Funct)
     begin

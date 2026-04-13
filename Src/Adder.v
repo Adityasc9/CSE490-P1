@@ -28,6 +28,11 @@ module Adder(
     
     reg [15:0] r;
     
+    initial
+    begin
+        r = 16'h0000;
+    end
+    
     always@ (A, B)
     begin
         r = A + B;

@@ -33,6 +33,12 @@ module ALU(
     localparam EQ = 1;
     localparam NE = 0;
     
+    initial
+    begin
+        r = 16'h0000;
+        f = 2'b00;
+    end
+    
     always@ (A, B, Operation)
     begin
         case(Operation)

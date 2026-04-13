@@ -29,6 +29,11 @@ module MUX2to1(
     
     reg[15:0] data_out;
     
+    initial
+    begin
+        data_out = 16'h0000;
+    end
+    
     always@(A,B,Select)
     begin
         case(Select)

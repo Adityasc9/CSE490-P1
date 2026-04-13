@@ -27,15 +27,17 @@ module PC(
     );
     
     reg[15:0] pc_reg;
-    initial
-
-    begin
+    
+    initial begin
         pc_reg = 16'h0000;
     end
     
     always@ (posedge Clock)
     begin
-        pc_reg <= NextAddr;
+        if (NextAddr === 16'bx)
+            pc_reg = 16'h0000;
+        else
+            pc_reg = NextAddr;
     end
     
     assign CurrAddr = pc_reg;

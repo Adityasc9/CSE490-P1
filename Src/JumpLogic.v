@@ -28,6 +28,11 @@ module JumpLogic(
     
     reg [15:0] jmp_addr;
     
+    initial
+    begin
+        jmp_addr = 16'h0000;
+    end
+    
     always@ (PC, Offset)
     begin
         jmp_addr = PC + Offset;

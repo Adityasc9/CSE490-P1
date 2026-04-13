@@ -21,8 +21,8 @@
 
 
 module Datapath(
-    input wire Clock
-    output wire [15:0] led,
+    input wire Clock,
+    output wire [15:0] led
     );
     
     // Program Counter
@@ -75,7 +75,7 @@ module Datapath(
     wire cntrl_memread;
     wire cntrl_memwrite;
     wire [15:0] datamem_out;
-    DataMemory data_memory(.Addr(alu_result), .DataIn(regfile_regdata2), .MemRead(cntrl_memread), .MemWrite(cntrl_memwrite), .DataOut(datamem_out)); 
+    DataMemory data_memory(.Addr(alu_result), .DataIn(regfile_regdata2), .MemRead(cntrl_memread), .MemWrite(cntrl_memwrite), .Clock(Clock), .DataOut(datamem_out)); 
     
     // Register Source MUX
     wire cntrl_memtoreg;
@@ -120,5 +120,5 @@ module Datapath(
                            .MemRead(cntrl_memread), .MemWrite(cntrl_memwrite), .ALUSrc(cntrl_alusrc),
                            .MemtoReg(cntrl_memtoreg), .RegWrite(cntrl_regwrite), .ALUOp(cntrl_aluop)
                           );
-    
+
 endmodule

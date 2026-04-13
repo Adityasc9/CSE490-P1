@@ -49,6 +49,8 @@ module ControlUnit(
         for (i = 7; i < 16; i = i + 1) begin
             csLUT[i] = 10'b0000000000;
         end
+        
+        cntrl_sig = 10'b0000000000;
     end
     
     always@ (Opcode)

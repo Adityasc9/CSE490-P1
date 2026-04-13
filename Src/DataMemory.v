@@ -25,6 +25,7 @@ module DataMemory(
     input wire[15:0] DataIn,
     input wire MemRead,
     input wire MemWrite,
+    input wire Clock,
     output wire[15:0] DataOut
     );
     
@@ -39,10 +40,11 @@ module DataMemory(
         for (i = 0; i < 256; i = i + 1) begin
             datamem[i] = 8'h00;
         end
+        a = 8'h00;
         dout = 16'h0000;
     end
     
-    always@ (Addr, DataIn, MemRead, MemWrite)
+    always@ (posedge Clock)
     begin
         a = Addr[7:0];
         
